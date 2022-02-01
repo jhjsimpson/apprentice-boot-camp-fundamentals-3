@@ -15,10 +15,12 @@ public class TaxCalculatorAfterFirstYearForExpensiveVehiclesTest {
 
     private static final LocalDate FIRST_OF_APRIL_2017 = LocalDate.of(2017, APRIL, 1);
     private TaxCalculator taxCalculator;
+    private FeatureToggle featureToggle = new FeatureToggle();
 
     @Before
     public void setUp() {
-        taxCalculator = new DummyTaxCalculator();
+        this.featureToggle.storyFiveFeatureToggle(true);
+        taxCalculator = new DefaultTaxCalculator(this.featureToggle);
     }
 
     @Test
