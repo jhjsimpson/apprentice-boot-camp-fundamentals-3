@@ -1,5 +1,8 @@
 package tax;
 
+import java.time.LocalDate;
+import java.util.Calendar;
+
 public class DefaultTaxCalculator extends TaxCalculator {
 
     private FeatureToggle featureToggle;
@@ -13,6 +16,18 @@ public class DefaultTaxCalculator extends TaxCalculator {
 
     public int calculateTax(Vehicle vehicle) {
         int emissions = vehicle.getCo2Emissions();
+
+        if (vehicle.getDateOfFirstRegistration().getYear() < this.getYear() && featureToggle.storyFourFeatureToggle() == true) {
+            if (vehicle.getFuelType() == FuelType.PETROL || vehicle.getFuelType() == FuelType.DIESEL) {
+                return 140;
+            }
+            if (vehicle.getFuelType() == FuelType.ELECTRIC) {
+                return 0;
+            }
+            if (vehicle.getFuelType() == FuelType.ALTERNATIVE_FUEL) {
+                return 130;
+            }
+        }
 
         if (vehicle.getFuelType() == FuelType.ALTERNATIVE_FUEL) {
             if (emissions <= 50) {
@@ -120,8 +135,12 @@ public class DefaultTaxCalculator extends TaxCalculator {
                 return 2070;
             }
         }
-        return 0;
 
+
+
+
+
+        return 0;
 
     }
 }
