@@ -14,6 +14,20 @@ public class DefaultTaxCalculator extends TaxCalculator {
     public int calculateTax(Vehicle vehicle) {
         int emissions = vehicle.getCo2Emissions();
 
+        if (featureToggle.storyFiveFeatureToggle()) {
+            if (vehicle.getListPrice() > 40_000) {
+                if (vehicle.getFuelType() == FuelType.PETROL) {
+                    return 450;
+                }
+                if (vehicle.getFuelType() == FuelType.ALTERNATIVE_FUEL) {
+                    return 440;
+                }
+                if (vehicle.getFuelType() == FuelType.ELECTRIC) {
+                    return 310;
+                }
+            }
+        }
+        
         if (vehicle.getFuelType() == FuelType.ALTERNATIVE_FUEL) {
             if (emissions <= 50) {
                 return 0;

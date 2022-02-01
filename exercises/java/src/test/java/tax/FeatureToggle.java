@@ -8,6 +8,9 @@ public class FeatureToggle {
     public boolean storyFourFeatureToggle() {
         return story_4;
     }
+    public boolean storyFiveFeatureToggle() {
+        return story_5;
+    }
 
     public void storyFourFeatureToggle(boolean activeTest) {
 
