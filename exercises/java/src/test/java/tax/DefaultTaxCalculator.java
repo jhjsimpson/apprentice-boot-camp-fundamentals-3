@@ -2,6 +2,15 @@ package tax;
 
 public class DefaultTaxCalculator extends TaxCalculator {
 
+    private FeatureToggle featureToggle;
+
+    public DefaultTaxCalculator(){this.featureToggle = new FeatureToggle();}
+
+    public DefaultTaxCalculator(FeatureToggle featureToggle) {
+
+        this.featureToggle = featureToggle;
+    }
+
     public int calculateTax(Vehicle vehicle) {
         int emissions = vehicle.getCo2Emissions();
 
@@ -112,5 +121,7 @@ public class DefaultTaxCalculator extends TaxCalculator {
             }
         }
         return 0;
+
+
     }
 }
