@@ -31,6 +31,20 @@ public class DefaultTaxCalculator extends TaxCalculator {
             }
         }
 
+        if (featureToggle.storyFiveFeatureToggle()) {
+            if (vehicle.getListPrice() > 40_000) {
+                if (vehicle.getFuelType() == FuelType.PETROL) {
+                    return 450;
+                }
+                if (vehicle.getFuelType() == FuelType.ALTERNATIVE_FUEL) {
+                    return 440;
+                }
+                if (vehicle.getFuelType() == FuelType.ELECTRIC) {
+                    return 310;
+                }
+            }
+        }
+
         if (vehicle.getFuelType() == FuelType.ALTERNATIVE_FUEL) {
             if (emissions <= 50) {
                 return 0;
@@ -137,11 +151,6 @@ public class DefaultTaxCalculator extends TaxCalculator {
                 return 2070;
             }
         }
-
-
-
-
-
         return 0;
 
     }
