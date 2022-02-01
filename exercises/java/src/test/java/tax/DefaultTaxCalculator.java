@@ -1,8 +1,5 @@
 package tax;
 
-import static tax.FuelType.DIESEL;
-import static tax.FuelType.PETROL;
-
 public class DefaultTaxCalculator extends TaxCalculator {
 
     public int calculateTax(Vehicle vehicle) {
@@ -35,7 +32,7 @@ public class DefaultTaxCalculator extends TaxCalculator {
             return 2060;
         }
 
-        if (vehicle.getFuelType() == PETROL) {
+        if (vehicle.getFuelType() == FuelType.PETROL) {
 
             if (emissions >= 1 && emissions <= 50) {
                 return 10;
@@ -75,7 +72,7 @@ public class DefaultTaxCalculator extends TaxCalculator {
             }
         }
 
-        if (vehicle.getFuelType() == DIESEL) {
+        if (vehicle.getFuelType() == FuelType.DIESEL) {
 
             if (emissions >= 1 && emissions <= 50) {
                 return 25;
