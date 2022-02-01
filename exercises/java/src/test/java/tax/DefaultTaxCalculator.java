@@ -18,7 +18,7 @@ public class DefaultTaxCalculator extends TaxCalculator {
         int emissions = vehicle.getCo2Emissions();
 
         if (featureToggle.storyFourFeatureToggle()) {
-            if (vehicle.getDateOfFirstRegistration().getYear() < 2019) {
+            if (vehicle.getDateOfFirstRegistration().getYear() != 2019) {
                 if (vehicle.getFuelType() == FuelType.PETROL || vehicle.getFuelType() == FuelType.DIESEL) {
                     return 140;
                 }
