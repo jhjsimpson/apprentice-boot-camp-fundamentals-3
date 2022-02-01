@@ -18,6 +18,7 @@ public class TaxCalculatorAfterFirstYearForExpensiveVehiclesTest {
     @Before
     public void setUp() {
         this.featureToggle.storyFiveFeatureToggle(true);
+        this.featureToggle.storyFourFeatureToggle(true);
         taxCalculator = new DefaultTaxCalculator(this.featureToggle);
     }
 

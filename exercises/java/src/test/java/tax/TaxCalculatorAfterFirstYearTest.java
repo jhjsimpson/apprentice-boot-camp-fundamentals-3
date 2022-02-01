@@ -21,6 +21,7 @@ public class TaxCalculatorAfterFirstYearTest {
     public void setUp() {
         this.featuretoggle = new FeatureToggle();
         this.featuretoggle.storyFourFeatureToggle(true);
+        this.featuretoggle.storyFiveFeatureToggle(true);
         taxCalculator = new DefaultTaxCalculator(this.featuretoggle);
 
     }
